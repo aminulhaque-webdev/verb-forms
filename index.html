@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ভার্ব ফর্ম – Learn with Shohidul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#14213d;--mute:#5b6b85;--line:#e3e9f2;--brand:#3b5bdb;--brand2:#7048e8;--chip:#e9eefc;--v2:#0b7285;--v3:#c2255c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1424;--card:#172038;--ink:#eef2ff;--mute:#9db0d3;--line:#26324f;--brand:#7c93ff;--brand2:#a78bfa;--chip:#222d4d;--v2:#3bc9db;--v3:#f783ac}}
+:root[data-theme="dark"]{--bg:#0e1424;--card:#172038;--ink:#eef2ff;--mute:#9db0d3;--line:#26324f;--brand:#7c93ff;--brand2:#a78bfa;--chip:#222d4d;--v2:#3bc9db;--v3:#f783ac}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Bengali",system-ui,sans-serif;line-height:1.6}
+.hero{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;padding:48px 20px 72px;text-align:center}
+.hero h1{margin:0 0 8px;font-size:clamp(26px,5vw,42px);font-weight:700}
+.hero p{margin:0 auto;max-width:560px;opacity:.92}
+.wrap{max-width:1100px;margin:-40px auto 0;padding:0 16px 40px}
+.bar{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;box-shadow:0 8px 24px rgba(20,33,61,.08)}
+.bar input{flex:1 1 220px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:10px 14px;font:inherit}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:0;background:var(--chip);color:var(--ink);padding:8px 16px;border-radius:999px;font:inherit;font-weight:500;cursor:pointer}
+.chip.on{background:var(--brand);color:#fff}
+.count{color:var(--mute);font-size:14px;margin:18px 4px 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(20,33,61,.1)}
+.ico{font-size:46px;line-height:1;text-align:center;background:var(--chip);border-radius:14px;padding:14px;margin-bottom:10px}.top{display:flex;justify-content:space-between;align-items:center}
+.n{font-size:12px;color:var(--mute);background:var(--chip);padding:1px 10px;border-radius:999px}
+.tag{font-size:12px;color:var(--mute)}
+.forms{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:12px 0 8px;text-align:center}
+.forms div{background:var(--bg);border-radius:10px;padding:8px 2px}
+.forms small{display:block;font-size:11px;color:var(--mute)}
+.forms b{font-size:16px}
+.forms div:nth-child(1) b{color:var(--brand)}.forms div:nth-child(2) b{color:var(--v2)}.forms div:nth-child(3) b{color:var(--v3)}
+.pr{font-size:14px;color:var(--mute)}
+.mn{margin-top:6px;font-size:18px;font-weight:600}
+.empty{text-align:center;color:var(--mute);padding:40px}
+details{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px;font-size:14px}summary{cursor:pointer;color:var(--brand);font-weight:600}details ol{margin:8px 0 0;padding-left:20px;color:var(--ink)}footer{text-align:center;color:var(--mute);font-size:13px;padding:10px 16px 30px}
+</style>
+</head>
+<body>
+<header class="hero">
+<h1>ভার্ব ফর্ম শিখুন</h1>
+<p>Present – Past – Past Participle, বাংলা উচ্চারণ ও অর্থসহ</p>
+</header>
+<main class="wrap">
+<div class="bar">
+<input id="q" type="search" placeholder="ইংরেজি বা বাংলায় খুঁজুন…" aria-label="খুঁজুন">
+<div class="chips">
+<button class="chip on" data-f="all">সব</button>
+<button class="chip" data-f="irr">Irregular</button>
+<button class="chip" data-f="reg">Regular</button>
+</div>
+</div>
+<div class="count" id="count"></div>
+<section class="grid" id="grid"></section>
+</main>
+<footer>© 2026 Learn with Shohidul – All rights reserved</footer>
+<script>
+var O="to school|home|rice|water|early|up early|a book|a letter|English|to friends|to music|a noise|a rainbow|a movie|at the sky|in the park|to work|on the bench|in line|the door|the window|fresh fruit|old books|a gift|a photo|some water|a message|a diary|the book on the table|tea|homework|at a bank|science|new words|math|football|the match|the key|a friend|the neighbors|my mother|a question|the phone|dinner|the dishes|the room|the paper|a glass|the bike|a car|a bicycle|to Dubai|in the river|at weddings|a song|at strangers|about exams|during the storm|the dark|to speak up|their money|the exam|the shop|the problem|the speed|the country|the team|the rules|on friends|to this team|a small shop|great talent|sugar|everyone|extra costs|our school|their ideas|with customers|to emails|to the news|to new places|our teacher|the mistake|a puppy|to the final|our health|a new phone|the result|your help|the plan|the flowers|the doctor|a file|many tourists|traffic|a cake|the budget|plastic bags|politely|twice|about their car|a book|the ball|to the king|horses|the news|with excitement|the cost|near the lake|about animals|a problem|the champion|for the team|the onions|old coins|the picture|a crying child|two phones|in the race|about the noise|the students|the cables|the offer|the notes|the mistakes".split("|");var E="🚶,👋,🍽️,🥤,😴,⏰,📖,✍️,🗣️,💬,👂,🔊,👀,📺,🔍,🏃,🚶,🪑,🧍,🚪,🔐,🛒,🏷️,🎁,🤲,📦,📨,🗄️,📥,🛠️,✅,💼,📚,🎓,👩‍🏫,⚽,🏆,😞,🤝,🆘,📞,❓,💡,🍳,🧼,🧹,✂️,💔,🔧,🚗,🚴,✈️,🏊,💃,🎤,😊,😟,😱,😨,😎,🎲,🎯,📋,🖐️,🎮,👑,🧭,👣,🧗,🏠,🔑,💎,🫙,➕,➖,🏛️,💭,📡,↩️,⚡,🦎,🤩,🙋,🐶,⏩,🌊,💰,📢,🙏,👍,🗂️,🧑‍🔧,📎,🧲,🚫,🍞,⚖️,⛔,😇,😉,😏,📚,🏀,🙇,🐄,📻,🫧,🧮,⛺,💗,💥,🥊,📣,🔪,🧺,🎨,🤗,🔀,🏁,😠,😵,🔌,🤔,📄,✔️".split(",");var D=("Go|Went|Gone|গো ওয়েন্ট গন|যাওয়া;Come|Came|Come|কাম কেম কাম|আসা;Eat|Ate|Eaten|ইট এইট ইটেন|খাওয়া;Drink|Drank|Drunk|ড্রিংক ড্র্যাংক ড্রাংক|পান করা;Sleep|Slept|Slept|স্লিপ স্লেপ্ট স্লেপ্ট|ঘুমানো;Wake|Woke|Woken|ওয়েইক ওক ওকেন|জাগা;Read|Read|Read|রিড রিড রিড|পড়া;Write|Wrote|Written|রাইট রোট রিটেন|লেখা;Speak|Spoke|Spoken|স্পিক স্পোক স্পোকেন|কথা বলা;Talk|Talked|Talked|টক টকড টকড|কথা বলা;Listen|Listened|Listened|লিসেন লিসেন্ড লিসেন্ড|শোনা;Hear|Heard|Heard|হিয়ার হার্ড হার্ড|শোনা;See|Saw|Seen|সি স সিন|দেখা;Watch|Watched|Watched|ওয়াচ ওয়াচড ওয়াচড|দেখা;Look|Looked|Looked|লুক লুক্ট লুক্ট|তাকানো;Run|Ran|Run|রান রান রান|দৌড়ানো;Walk|Walked|Walked|ওয়াক ওয়াক্ট ওয়াক্ট|হাঁটা;Sit|Sat|Sat|সিট স্যাট স্যাট|বসা;Stand|Stood|Stood|স্ট্যান্ড স্টুড স্টুড|দাঁড়ানো;Open|Opened|Opened|ওপেন ওপেন্ড ওপেন্ড|খোলা;Close|Closed|Closed|ক্লোজ ক্লোজড ক্লোজড|বন্ধ করা;Buy|Bought|Bought|বাই বট বট|কেনা;Sell|Sold|Sold|সেল সোল্ড সোল্ড|বিক্রি করা;Give|Gave|Given|গিভ গেইভ গিভেন|দেওয়া;Take|Took|Taken|টেক টুক টেকেন|নেওয়া;Bring|Brought|Brought|ব্রিং ব্রট ব্রট|আনা;Send|Sent|Sent|সেন্ড সেন্ট সেন্ট|পাঠানো;Keep|Kept|Kept|কিপ কেপ্ট কেপ্ট|রাখা;Put|Put|Put|পুট পুট পুট|রাখা;Make|Made|Made|মেক মেড মেড|তৈরি করা;Do|Did|Done|ডু ডিড ডান|করা;Work|Worked|Worked|ওয়ার্ক ওয়ার্ক্ট ওয়ার্ক্ট|কাজ করা;Study|Studied|Studied|স্টাডি স্টাডিড স্টাডিড|পড়াশোনা করা;Learn|Learned|Learned|লার্ন লার্নড লার্নড|শেখা;Teach|Taught|Taught|টিচ টট টট|শেখানো;Play|Played|Played|প্লে প্লেড প্লেড|খেলা;Win|Won|Won|উইন ওয়ান ওয়ান|জেতা;Lose|Lost|Lost|লুজ লস্ট লস্ট|হারানো;Meet|Met|Met|মিট মেট মেট|দেখা করা;Help|Helped|Helped|হেল্প হেল্প্ট হেল্প্ট|সাহায্য করা;Call|Called|Called|কল কল্ড কল্ড|ডাক দেওয়া / ফোন করা;Ask|Asked|Asked|আস্ক আস্ক্ট আস্ক্ট|জিজ্ঞেস করা;Answer|Answered|Answered|আনসার আনসার্ড আনসার্ড|উত্তর দেওয়া;Cook|Cooked|Cooked|কুক কুক্ট কুক্ট|রান্না করা;Wash|Washed|Washed|ওয়াশ ওয়াশ্ট ওয়াশ্ট|ধোয়া;Clean|Cleaned|Cleaned|ক্লিন ক্লিন্ড ক্লিন্ড|পরিষ্কার করা;Cut|Cut|Cut|কাট কাট কাট|কাটা;Break|Broke|Broken|ব্রেক ব্রোক ব্রোকেন|ভাঙা;Fix|Fixed|Fixed|ফিক্স ফিক্সট ফিক্সট|মেরামত করা;Drive|Drove|Driven|ড্রাইভ ড্রোভ ড্রিভেন|গাড়ি চালানো;Ride|Rode|Ridden|রাইড রোড রিডেন|চড়া;Fly|Flew|Flown|ফ্লাই ফ্লু ফ্লোন|উড়া;Swim|Swam|Swum|সুইম সোয়্যাম সোয়াম|সাঁতার কাটা;Dance|Danced|Danced|ড্যান্স ড্যান্সট ড্যান্সট|নাচা;Sing|Sang|Sung|সিং স্যাং সাং|গান গাওয়া;Smile|Smiled|Smiled|স্মাইল স্মাইল্ড স্মাইল্ড|হাসা;Worry|Worried|Worried|ওয়ারি ওয়ারিড ওয়ারিড|দুশ্চিন্তা করা;Panic|Panicked|Panicked|প্যানিক প্যানিক্ট প্যানিক্ট|আতঙ্কিত হওয়া;Fear|Feared|Feared|ফিয়ার ফিয়ার্ড ফিয়ার্ড|ভয় পাওয়া;Dare|Dared|Dared|ডেয়ার ডেয়ার্ড ডেয়ার্ড|সাহস করা;Risk|Risked|Risked|রিস্ক রিস্ক্ট রিস্ক্ট|ঝুঁকি নেওয়া;Attempt|Attempted|Attempted|অ্যাটেম্পট অ্যাটেম্পটেড অ্যাটেম্পটেড|চেষ্টা করা;Manage|Managed|Managed|ম্যানেজ ম্যানেজড ম্যানেজড|সামলানো;Handle|Handled|Handled|হ্যান্ডেল হ্যান্ডেল্ড হ্যান্ডেল্ড|পরিচালনা করা;Control|Controlled|Controlled|কন্ট্রোল কন্ট্রোল্ড কন্ট্রোল্ড|নিয়ন্ত্রণ করা;Rule|Ruled|Ruled|রুল রুল্ড রুল্ড|শাসন করা;Lead|Led|Led|লিড লেড লেড|নেতৃত্ব দেওয়া;Follow|Followed|Followed|ফলো ফলোড ফলোড|অনুসরণ করা;Depend|Depended|Depended|ডিপেন্ড ডিপেন্ডেড ডিপেন্ডেড|নির্ভর করা;Belong|Belonged|Belonged|বিলং বিলংড বিলংড|অন্তর্ভুক্ত হওয়া;Own|Owned|Owned|ওন ওন্ড ওন্ড|মালিক হওয়া;Possess|Possessed|Possessed|পজেস পজেসড পজেসড|অধিকার করা;Contain|Contained|Contained|কনটেইন কনটেইন্ড কনটেইন্ড|ধারণ করা;Include|Included|Included|ইনক্লুড ইনক্লুডেড ইনক্লুডেড|অন্তর্ভুক্ত করা;Exclude|Excluded|Excluded|এক্সক্লুড এক্সক্লুডেড এক্সক্লুডেড|বাদ দেওয়া;Represent|Represented|Represented|রিপ্রেজেন্ট রিপ্রেজেন্টেড রিপ্রেজেন্টেড|প্রতিনিধিত্ব করা;Express|Expressed|Expressed|এক্সপ্রেস এক্সপ্রেসড এক্সপ্রেসড|প্রকাশ করা;Communicate|Communicated|Communicated|কমিউনিকেট কমিউনিকেটেড কমিউনিকেটেড|যোগাযোগ করা;Respond|Responded|Responded|রেসপন্ড রেসপন্ডেড রেসপন্ডেড|উত্তর দেওয়া;React|Reacted|Reacted|রিয়্যাক্ট রিয়্যাক্টেড রিয়্যাক্টেড|প্রতিক্রিয়া দেখানো;Adapt|Adapted|Adapted|অ্যাডাপ্ট অ্যাডাপ্টেড অ্যাডাপ্টেড|মানিয়ে নেওয়া;Admire|Admired|Admired|অ্যাডমায়ার অ্যাডমায়ার্ড অ্যাডমায়ার্ড|প্রশংসা করা;Admit|Admitted|Admitted|অ্যাডমিট অ্যাডমিটেড অ্যাডমিটেড|স্বীকার করা;Adopt|Adopted|Adopted|অ্যাডপ্ট অ্যাডপ্টেড অ্যাডপ্টেড|গ্রহণ করা;Advance|Advanced|Advanced|অ্যাডভান্স অ্যাডভান্সড অ্যাডভান্সড|অগ্রসর হওয়া;Affect|Affected|Affected|অ্যাফেক্ট অ্যাফেক্টেড অ্যাফেক্টেড|প্রভাবিত করা;Afford|Afforded|Afforded|অ্যাফোর্ড অ্যাফোর্ডেড অ্যাফোর্ডেড|সামর্থ্য থাকা;Announce|Announced|Announced|অ্যানাউন্স অ্যানাউন্সড অ্যানাউন্সড|ঘোষণা করা;Appreciate|Appreciated|Appreciated|অ্যাপ্রিশিয়েট অ্যাপ্রিশিয়েটেড অ্যাপ্রিশিয়েটেড|মূল্যায়ন করা;Approve|Approved|Approved|অ্যাপ্রুভ অ্যাপ্রুভড অ্যাপ্রুভড|অনুমোদন করা;Arrange|Arranged|Arranged|অ্যারেঞ্জ অ্যারেঞ্জড অ্যারেঞ্জড|সাজানো;Assist|Assisted|Assisted|অ্যাসিস্ট অ্যাসিস্টেড অ্যাসিস্টেড|সহায়তা করা;Attach|Attached|Attached|অ্যাটাচ অ্যাটাচড অ্যাটাচড|সংযুক্ত করা;Attract|Attracted|Attracted|অ্যাট্রাক্ট অ্যাট্রাক্টেড অ্যাট্রাক্টেড|আকর্ষণ করা;Avoid|Avoided|Avoided|অ্যাভয়েড অ্যাভয়েডেড অ্যাভয়েডেড|এড়িয়ে চলা;Bake|Baked|Baked|বেইক বেইক্ট বেইক্ট|বেক করা;Balance|Balanced|Balanced|ব্যালেন্স ব্যালেন্সড ব্যালেন্সড|ভারসাম্য রাখা;Ban|Banned|Banned|ব্যান ব্যান্ড ব্যান্ড|নিষিদ্ধ করা;Behave|Behaved|Behaved|বিকেইভ বিকেইভড বিকেইভড|আচরণ করা;Blink|Blinked|Blinked|ব্লিংক ব্লিংকট ব্লিংকট|চোখের পাতা ফেলা;Boast|Boasted|Boasted|বোস্ট বোস্টেড বোস্টেড|গর্ব করা;Borrow|Borrowed|Borrowed|বরো বরোড বরোড|ধার নেওয়া;Bounce|Bounced|Bounced|বাউন্স বাউন্সড বাউন্সড|লাফানো;Bow|Bowed|Bowed|বাও বাউড বাউড|নত হওয়া;Breed|Bred|Bred|ব্রিড ব্রেড ব্রেড|প্রজনন করা;Broadcast|Broadcast|Broadcast|ব্রডকাস্ট ব্রডকাস্ট ব্রডকাস্ট|সম্প্রচার করা;Bubble|Bubbled|Bubbled|বাবল বাবল্ড বাবল্ড|বুদবুদ হওয়া;Calculate|Calculated|Calculated|ক্যালকুলেট ক্যালকুলেটেড ক্যালকুলেটেড|হিসাব করা;Camp|Camped|Camped|ক্যাম্প ক্যাম্পট ক্যাম্পট|ক্যাম্প করা;Care|Cared|Cared|কেয়ার কেয়ার্ড কেয়ার্ড|যত্ন নেওয়া;Cause|Caused|Caused|কজ কজড কজড|ঘটানো;Challenge|Challenged|Challenged|চ্যালেঞ্জ চ্যালেঞ্জড চ্যালেঞ্জড|চ্যালেঞ্জ করা;Cheer|Cheered|Cheered|চিয়ার চিয়ার্ড চিয়ার্ড|উল্লাস করা;Chop|Chopped|Chopped|চপ চপ্ট চপ্ট|কুচি কুচি করা;Collect|Collected|Collected|কালেক্ট কালেক্টেড কালেক্টেড|সংগ্রহ করা;Color|Colored|Colored|কালার কালার্ড কালার্ড|রং করা;Comfort|Comforted|Comforted|কমফোর্ট কমফোর্টেড কমফোর্টেড|সান্ত্বনা দেওয়া;Compare|Compared|Compared|কমপেয়ার কমপেয়ার্ড কমপেয়ার্ড|তুলনা করা;Compete|Competed|Competed|কমপিট কমপিটেড কমপিটেড|প্রতিযোগিতা করা;Complain|Complained|Complained|কমপ্লেইন কমপ্লেইন্ড কমপ্লেইন্ড|অভিযোগ করা;Confuse|Confused|Confused|কনফিউজ কনফিউজড কনফিউজড|বিভ্রান্ত করা;Connect|Connected|Connected|কানেক্ট কানেক্টেড কানেক্টেড|সংযুক্ত করা;Consider|Considered|Considered|কনসিডার কনসিডার্ড কনসিডার্ড|বিবেচনা করা;Copy|Copied|Copied|কপি কপিড কপিড|নকল করা;Correct|Corrected|Corrected|কারেক্ট কারেক্টেড কারেক্টেড|সংশোধন করা").split(";").map(function(s,i){var a=s.split("|");return{o:O[i],e:E[i]||"📘",n:i+1,a:a[0],b:a[1],c:a[2],p:a[3].split(" ").join(" – "),m:a[4],r:/ed$/.test(a[1])&&a[1]===a[2]}});
+var f="all",grid=document.getElementById("grid"),cnt=document.getElementById("count"),q=document.getElementById("q");
+function ex(x){if(!x.o)return"";var a=x.a.toLowerCase(),b=x.b.toLowerCase(),c=x.c.toLowerCase();return '<details><summary>৩টি উদাহরণ বাক্য</summary><ol><li>They '+a+' '+x.o+' every week.</li><li>He '+b+' '+x.o+' yesterday.</li><li>We have '+c+' '+x.o+' already.</li></ol></details>';}function render(){
+var t=q.value.trim().toLowerCase();
+var L=D.filter(function(x){
+if(f==="reg"&&!x.r)return false;
+if(f==="irr"&&x.r)return false;
+return !t||(x.a+" "+x.b+" "+x.c+" "+x.m+" "+x.p).toLowerCase().indexOf(t)>-1;});
+cnt.textContent=L.length+"টি ভার্ব দেখানো হচ্ছে";
+if(!L.length){grid.innerHTML='<div class="empty">কিছু পাওয়া যায়নি</div>';return;}
+grid.innerHTML=L.map(function(x){return '<article class="card"><div class="ico" aria-hidden="true">'+x.e+'</div><div class="top"><span class="n">'+x.n+'</span><span class="tag">'+(x.r?"Regular":"Irregular")+'</span></div><div class="forms"><div><small>V1</small><b>'+x.a+'</b></div><div><small>V2</small><b>'+x.b+'</b></div><div><small>V3</small><b>'+x.c+'</b></div></div><div class="pr">উচ্চারণ: '+x.p+'</div><div class="mn">'+x.m+'</div>'+ex(x)+'</article>';}).join("");
+}
+q.addEventListener("input",render);
+document.querySelectorAll(".chip").forEach(function(b){b.addEventListener("click",function(){
+document.querySelectorAll(".chip").forEach(function(c){c.classList.remove("on")});
+b.classList.add("on");f=b.dataset.f;render();});});
+render();
+</script>
+</body>
+</html>
